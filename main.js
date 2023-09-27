@@ -13,8 +13,16 @@ const app = Vue.createApp({
                 '20% Polyester',
             ],
             variants: [
-                { id: 2234, color: 'green' },
-                { id: 2235, color: 'blue' },
+                {
+                    id: 2234,
+                    color: 'green',
+                    image: './assets/images/socks_green.jpg',
+                },
+                {
+                    id: 2235,
+                    color: 'blue',
+                    image: './assets/images/socks_blue.jpg',
+                },
             ],
             sizes: [
                 'S', 'M', 'L', 'XL', 'XXL'
@@ -26,6 +34,10 @@ const app = Vue.createApp({
         addToCart() {
             console.log('this', this);
             this.cart += 1;
-        }
+        },
+
+        showVariantImage(image) {
+            this.image = image;
+        },
     }
 });
