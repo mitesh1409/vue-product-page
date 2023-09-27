@@ -20,5 +20,12 @@ const app = Vue.createApp({
                 'S', 'M', 'L', 'XL', 'XXL'
             ],
         };
+    },
+
+    methods: {
+        addToCart() {
+            console.log('this', this);
+            this.cart += 1;
+        }
     }
 });
