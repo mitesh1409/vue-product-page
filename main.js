@@ -6,6 +6,11 @@ const app = Vue.createApp({
             image: './assets/images/socks_green.jpg',
             inventory: 100,
             onSale: true,
+            details: [
+                '50% Cotton',
+                '30% Wool',
+                '20% Polyester',
+            ],
         };
     }
 });
