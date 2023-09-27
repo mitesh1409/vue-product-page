@@ -38,6 +38,13 @@
                     </ul>
 
                     <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+
+                    <select>
+                        <option>Select</option>
+                        <template v-for="size in sizes">
+                            <option :value="size">{{ size }}</option>
+                        </template>
+                    </select>
                 </div>
             </div>
         </div>
