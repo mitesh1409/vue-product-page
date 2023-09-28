@@ -44,5 +44,9 @@ const app = Vue.createApp({
         showVariantImage(image) {
             this.image = image;
         },
+
+        inStock() {
+            return this.inventory > 0 ? true : false;
+        },
     }
 });
