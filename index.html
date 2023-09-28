@@ -40,8 +40,10 @@
                     </ul>
 
                     <template v-for="variant in variants" :key="variant.id">
-                        <div @mouseover="showVariantImage(variant.image)">
-                            {{ variant.color }}
+                        <div
+                            @mouseover="showVariantImage(variant.image)"
+                            class="color-circle"
+                            :style="{ backgroundColor: variant.color }">
                         </div>
                     </template>
 
