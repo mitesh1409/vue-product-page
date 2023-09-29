@@ -3,6 +3,7 @@ const app = Vue.createApp({
         return {
             cart: 0,
             product: 'Socks',
+            brand: 'Vue Mastery',
             description: 'Description goes here',
             image: './assets/images/socks_green.jpg',
             inventory: 100,
@@ -48,5 +49,11 @@ const app = Vue.createApp({
         inStock() {
             return this.inventory > 0 ? true : false;
         },
+    },
+
+    computed: {
+        title() {
+            return `${this.brand} ${this.product}`;
+        }
     }
 });
