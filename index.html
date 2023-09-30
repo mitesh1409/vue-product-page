@@ -23,28 +23,26 @@
             <div class="product-container">
                 <div class="product-image">
                     <img
-                        :src="currentVariant.image"
+                        :src="image"
                         alt="Socks"
-                        :class="{ 'out-of-stock-img': !inStock() }">
+                        :class="{ 'out-of-stock-img': !inStock }">
                 </div>
                 <div class="product-info">
                     <h1>{{ title }}</h1>
 
                     <p>{{ description }}</p>
 
-                    <p v-if="currentVariant.quantity > 10">In stock</p>
-                    <p v-else-if="(currentVariant.quantity <= 10) && (currentVariant.quantity > 0)">Almost sold out!</p>
-                    <p v-else>Out of stock</p>
+                    <p>{{ stockInfo }}</p>
 
-                    <p v-if="onSale">On Sale!</p>
+                    <p v-if="onSale">{{ onSaleInfo }}</p>
 
                     <ul>
                         <li v-for="detail in details">{{ detail }}</li>
                     </ul>
 
-                    <template v-for="variant in variants" :key="variant.id">
+                    <template v-for="(variant, index) in variants" :key="variant.id">
                         <div
-                            @mouseover="changeCurrentVariant(variant.id)"
+                            @mouseover="updateVariant(index)"
                             class="color-circle"
                             :style="{ backgroundColor: variant.color }">
                         </div>
@@ -61,8 +59,8 @@
 
                     <button
                         class="button"
-                        :class="{ disabledButton: !inStock() }"
-                        :disabled="!inStock()"
+                        :class="{ disabledButton: !inStock }"
+                        :disabled="!inStock"
                         @click="addToCart">
                         Add to Cart
                     </button>

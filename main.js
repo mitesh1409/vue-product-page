@@ -11,12 +11,7 @@ const app = Vue.createApp({
                 '30% Wool',
                 '20% Polyester',
             ],
-            currentVariant: {
-                id: 2234,
-                color: 'green',
-                image: './assets/images/socks_green.jpg',
-                quantity: 50,
-            },
+            selectedVariantIndex: 0,
             variants: [
                 {
                     id: 2234,
@@ -48,21 +43,39 @@ const app = Vue.createApp({
             }
         },
 
-        changeCurrentVariant(variantId) {
-            const result = this.variants.filter((variant) => variant.id === variantId);
-            if (result.length > 0) {
-                this.currentVariant = result[0];
-            }
-        },
-
-        inStock() {
-            return this.currentVariant.quantity > 0 ? true : false;
+        updateVariant(variantIndex) {
+            this.selectedVariantIndex = variantIndex;
         },
     },
 
     computed: {
         title() {
             return `${this.brand} ${this.product}`;
-        }
+        },
+
+        inStock() {
+            return this.variants[this.selectedVariantIndex].quantity > 0 ? true : false;
+        },
+
+        stockInfo() {
+            if (this.variants[this.selectedVariantIndex].quantity > 10) {
+                return 'In Stock';
+            }
+
+            if ((this.variants[this.selectedVariantIndex].quantity > 0) &&
+                (this.variants[this.selectedVariantIndex].quantity <= 10)) {
+                return 'Almost sold out!';
+            }
+
+            return 'Out of stock';
+        },
+
+        onSaleInfo() {
+            return `${this.brand} ${this.product} is on sale!`;
+        },
+
+        image() {
+            return this.variants[this.selectedVariantIndex].image;
+        },
     }
 });
