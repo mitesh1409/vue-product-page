@@ -1,6 +1,13 @@
 app.component(
     'product-display',
     {
+        props: {
+            premium: {
+                type: Boolean,
+                required: true,
+            }
+        },
+
         template:
         // Below is there for html syntax highlighting using es6-string-html extension.
         /*html*/
@@ -18,6 +25,8 @@ app.component(
                     <p>{{ description }}</p>
 
                     <p>{{ stockInfo }}</p>
+
+                    <p>Shipping: {{ shipping }} </p>
 
                     <p v-if="onSale">{{ onSaleInfo }}</p>
 
@@ -131,6 +140,10 @@ app.component(
             image() {
                 return this.variants[this.selectedVariantIndex].image;
             },
+
+            shipping() {
+                return this.premium ? 'Free' : 2.99;
+            }
         }
     }
 );
