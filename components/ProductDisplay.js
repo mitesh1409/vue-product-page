@@ -30,9 +30,7 @@ app.component(
 
                     <p v-if="onSale">{{ onSaleInfo }}</p>
 
-                    <ul>
-                        <li v-for="detail in details">{{ detail }}</li>
-                    </ul>
+                    <product-details :details="details"></product-details>
 
                     <template v-for="(variant, index) in variants" :key="variant.id">
                         <div
