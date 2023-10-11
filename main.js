@@ -1,23 +1,27 @@
 const app = Vue.createApp({
     data() {
         return {
-            cart: 0,
+            cart: [],
             premium: true,
         };
     },
 
     methods: {
-        addToCart() {
-            this.cart += 1;
+        addToCart(productId) {
+            this.cart.push(productId);
         },
 
-        removeFromCart() {
-            if (this.cart > 0) {
-                this.cart -= 1;
+        removeFromCart(productId) {
+            const index = this.cart.indexOf(productId);
+            if (index >= 0) {
+                this.cart.splice(index, 1);
             }
         },
     },
 
     computed: {
+        cartItemsCount() {
+            return this.cart.length;
+        }
     }
 });

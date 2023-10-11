@@ -101,11 +101,11 @@ app.component(
             },
 
             addToCart() {
-                this.$emit('add-to-cart');
+                this.$emit('add-to-cart', this.variants[this.selectedVariantIndex].id);
             },
 
             removeFromCart() {
-                this.$emit('remove-from-cart');
+                this.$emit('remove-from-cart', this.variants[this.selectedVariantIndex].id);
             }
         },
 
