@@ -56,7 +56,9 @@ app.component(
                         @click="addToCart">
                         Add to Cart
                     </button>
-                    <button class="button" @click="removeFromCart">Remove from Cart</button>
+                    <button class="button" @click="removeFromCart">
+                        Remove from Cart
+                    </button>
                 </div>
             </div>
         </div>`,
@@ -94,19 +96,17 @@ app.component(
         },
 
         methods: {
-            addToCart() {
-                this.cart += 1;
-            },
-
-            removeFromCart() {
-                if (this.cart > 0) {
-                    this.cart -= 1;
-                }
-            },
-
             updateVariant(variantIndex) {
                 this.selectedVariantIndex = variantIndex;
             },
+
+            addToCart() {
+                this.$emit('add-to-cart');
+            },
+
+            removeFromCart() {
+                this.$emit('remove-from-cart');
+            }
         },
 
         computed: {

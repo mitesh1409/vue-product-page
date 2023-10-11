@@ -19,7 +19,11 @@
 
         <div class="cart">Cart {{ cart }}</div>
 
-        <product-display :premium="premium"></product-display>
+        <product-display
+            :premium="premium"
+            @add-to-cart="addToCart"
+            @remove-from-cart="removeFromCart">
+        </product-display>
     </div>
 
     <!-- Import Vue App -->
