@@ -61,6 +61,8 @@ app.component(
                     </button>
                 </div>
             </div>
+
+            <review-form @review-submitted="addReview"></review-form>
         </div>`,
 
         data() {
@@ -92,6 +94,7 @@ app.component(
                 sizes: [
                     'S', 'M', 'L', 'XL', 'XXL'
                 ],
+                reviews: [],
             };
         },
 
@@ -106,7 +109,11 @@ app.component(
 
             removeFromCart() {
                 this.$emit('remove-from-cart', this.variants[this.selectedVariantIndex].id);
-            }
+            },
+
+            addReview(review) {
+                this.reviews.push(review);
+            },
         },
 
         computed: {
